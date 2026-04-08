@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Birzeit University Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            height: 100vh; /* full screen */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // Coordinates of Birzeit University
+    var map = L.map('map').setView([31.9626, 35.1796], 15);
+
+    // OpenStreetMap layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Marker on Birzeit University
+    L.marker([31.9626, 35.1796]).addTo(map)
+        .bindPopup('Birzeit University')
+        .openPopup();
+
+    // Optional: Set map extent (bounding box)
+    var bounds = [
+        [31.955, 35.170], // southwest
+        [31.970, 35.190]  // northeast
+    ];
+    map.fitBounds(bounds);
+</script>
+
+</body>
+</html>
